@@ -155,36 +155,3 @@ class Detection_tools:
         cv2.imshow('img', img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
-
-    
-    def gray_to_yolo(self,image_path,yolo_path):
-
-        self.image_path = image_path
-        self.yolo_path = yolo_path
-
-        import cv2
-
-        img = cv2.imread(self.image_path, 0)
-
-        ret,thresh = cv2.threshold(img,127,255,0)
-
-        contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
-        coords = []
-        for contour in contours:
-            x,y,w,h = cv2.boundingRect(contour)
-            # Convert coordinates to YOLO format
-            x_center = (x + w/2) / img.shape[1]
-            y_center = (y + h/2) / img.shape[0]
-            width = w / img.shape[1]
-            height = h / img.shape[0]
-            # Add the coordinates to the list
-            coords.append((x_center, y_center, width, height))
-
-        with open(self.yolo_path, 'w') as f:
-            for coord in coords:
-                f.write(f'0 {coord[0]} {coord[1]} {coord[2]} {coord[3]}\n')
-
-# test1 = Detection_tools()
-# # test1.gray_to_mask('open_map.png',(150,2,240),(150,3,240))
-# test1.gray_to_boxes('open_map.png',(150,2,240),(150,3,240))
