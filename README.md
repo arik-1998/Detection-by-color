@@ -1,4 +1,4 @@
-# Detection by colour:
+# Detection by color:
 In this task I used the open-cv and numpy libraries. With the help of the first method, we can find the HSV values of a particular color. This site can help with that. https://imagecolorpicker.online/ru/ be careful that you need to reduce the value of H by 2 times, and calculate the values of C and V by the percentage of 255.
 ![2](https://github.com/arik-1998/detection/assets/116187220/b2b41f89-ae11-4717-a6da-05d4fb20760c)
 After that, we must assign an interval of HSV values between which all colors will be displayed. HL(low)-H, SL-S, VL-V
