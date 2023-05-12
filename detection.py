@@ -70,8 +70,6 @@ class Detection_tools:
         lower = np.array(self.hsv_lower)
         upper = np.array(self.hsv_upper)
 
-        # mask = cv2.bitwise_or(mask1, mask2)
-
         mask = cv2.inRange(hsv,lower,upper)
 
 
@@ -84,14 +82,10 @@ class Detection_tools:
             if len(contours[i]) > 10:
                 cv2.drawContours(img,[contours[i]],0,(0,255,0),-1)
                 cv2.drawContours(img,[contours[i]],0,(0,0,255),1)
-            # c = hier[0][i][2]
-            # if c == -1 and len(contours[i]) > 0:
-            #     cv2.drawContours(img,[contours[i]],0,(0,0,255),-1)
 
         cv2.imshow('mask',mask)
 
         cv2.imshow('img',img)
-
 
         cv2.waitKey(0)
         cv2.destroyAllWindows() 
@@ -117,8 +111,6 @@ class Detection_tools:
 
         lower = np.array(self.hsv_lower)
         upper = np.array(self.hsv_upper)
-
-        # mask = cv2.bitwise_or(mask1, mask2)
 
         mask = cv2.inRange(hsv,lower,upper)
 
